@@ -1,0 +1,4 @@
+interface:
+  display_name: "AIMony ERP Assistant"
+  short_description: "Use AIMony ERP with simple login and safe actions"
+  default_prompt: "Use $aimony-erp-assistant to connect to my AIMony workspace and complete this ERP request."

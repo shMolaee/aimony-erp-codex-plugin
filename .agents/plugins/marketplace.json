@@ -1,0 +1,20 @@
+{
+  "name": "aimony-erp",
+  "interface": {
+    "displayName": "AIMony ERP"
+  },
+  "plugins": [
+    {
+      "name": "aimony-erp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/aimony-erp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
