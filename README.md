@@ -2,6 +2,19 @@
 
 AIMony ERP connects Codex to an authenticated AIMony workspace for workspace-aware reporting and governed ERP actions.
 
+## Direct download
+
+- [Download AIMony ERP for Codex v0.1.0](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.1.0.zip)
+- [Download the latest package](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin.zip)
+- [SHA-256 checksum](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.1.0.zip.sha256)
+
+After downloading, extract the ZIP and add its root directory as a local Codex marketplace:
+
+```powershell
+codex plugin marketplace add C:\path\to\aimony-erp-codex-plugin-v0.1.0
+codex plugin add aimony-erp@aimony-erp
+```
+
 ## Capabilities
 
 - Inspect the active workspace.
