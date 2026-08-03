@@ -20,7 +20,7 @@ Use AIMony's MCP tools to complete the user's request in the authenticated works
 ## Discover only relevant capabilities
 
 - Treat the current `tools/list` response and `capability.search` results as the only authoritative catalog. Schemas and availability are actor-, tenant-, permission-, and version-scoped; never use a remembered or guessed tool.
-- When the exact typed capability is visible, call it directly. When it is not visible on the current page, call `capability.search` with concise English intent/entity keywords and only filters grounded in the user's request.
+- When the exact typed capability is visible and its descriptor is read-only, call it directly. Route every write through the proposal lane even when its typed tool is visible. When the exact tool is not visible on the current page, call `capability.search` with concise English intent/entity keywords and only filters grounded in the user's request.
 - Select exactly one matching returned `toolKey` and call `capability.describe`. For a target whose current descriptor says `readOnly=true`, call `capability.invoke` with the unchanged `descriptorDigest` and arguments that exactly match the returned `inputSchema`.
 - For a mutation or external side effect, call `capability.propose` with the unchanged digest, schema-valid arguments, and a stable idempotency key for that exact action. Reuse the key only for an exact retry; use a new key only for a genuinely new action. The proposal lane never directly mutates ERP.
 - If a descriptor digest is stale, search and describe again. Never send a write target to `capability.invoke` or a read-only target to `capability.propose`.
