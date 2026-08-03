@@ -1,7 +1,7 @@
 {
   "name": "aimony-erp",
-  "version": "0.1.0",
-  "description": "Connect Codex to AIMony ERP with guided sign-in, workspace-aware reads, governed writes, and blog publishing.",
+  "version": "0.2.0",
+  "description": "Connect Codex to AIMony ERP with guided sign-in, governed reads, replay-safe finance and domain actions, strategy, managed settings, and scheduled blog publishing.",
   "author": {
     "name": "Aimori"
   },
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "AIMony ERP",
     "shortDescription": "Run AIMony ERP tasks safely from Codex.",
-    "longDescription": "Connects Codex to AIMony ERP with a simple sign-in flow, accurate workspace-scoped reporting, safely confirmed ERP changes, and blog publishing.",
+    "longDescription": "Connects Codex to AIMony ERP with native sign-in, permission-scoped semantic reporting, exact two-phase confirmations, replay-safe finance and domain actions, typed strategy records, managed settings, and scheduled blog publishing.",
     "developerName": "Aimori",
     "category": "Productivity",
     "capabilities": [
@@ -18,9 +18,8 @@
     "websiteURL": "https://aimony.ir/",
     "defaultPrompt": [
       "فضای کاری فعال AIMony من را شناسایی و خلاصه کن.",
-      "تعداد و فهرست مشتریان، محصولات، تیکت‌ها و فاکتورهای این workspace را بررسی کن.",
-      "برای این درخواست یک عملیات ERP امن پیشنهاد بده و بعد از تأیید من نهایی‌اش کن.",
-      "یک پیش‌نویس پست بلاگ در AIMony بساز و برای انتشار آماده کن."
+      "تعداد و فهرست مشتریان، محصولات، تیکت‌ها و فاکتورهای این workspace را کامل بررسی کن.",
+      "این عملیات ERP را پیشنهاد بده و بعد از تأیید صریح من از همین‌جا نهایی کن."
     ]
   },
   "mcpServers": "./.mcp.json"
