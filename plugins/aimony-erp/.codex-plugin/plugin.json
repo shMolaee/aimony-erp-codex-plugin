@@ -1,7 +1,7 @@
 {
   "name": "aimony-erp",
-  "version": "0.2.1",
-  "description": "Connect Codex to AIMony ERP with guided sign-in, permission-scoped dynamic capability discovery, governed reads, replay-safe actions, finance, strategy, settings, and blog publishing.",
+  "version": "0.2.2",
+  "description": "Connect Codex to AIMony ERP with guided sign-in, permission-scoped dynamic discovery, a read-only invocation lane, governed write proposals, finance, strategy, settings, and blog publishing.",
   "author": {
     "name": "Aimori"
   },
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "AIMony ERP",
     "shortDescription": "Run AIMony ERP tasks safely from Codex.",
-    "longDescription": "Connects Codex to AIMony ERP with native sign-in, a compact permission-scoped dynamic capability catalog, semantic reporting, exact two-phase confirmations, replay-safe finance and domain actions, typed strategy records, managed settings, and scheduled blog publishing.",
+    "longDescription": "Connects Codex to AIMony ERP with native sign-in, a compact permission-scoped dynamic capability catalog, a strictly read-only invocation lane, governed write proposals, exact two-phase confirmations, replay-safe finance and domain actions, typed strategy records, managed settings, and scheduled blog publishing.",
     "developerName": "Aimori",
     "category": "Productivity",
     "capabilities": [

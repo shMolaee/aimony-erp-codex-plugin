@@ -4,7 +4,12 @@
       "type": "http",
       "url": "https://api.aimony.ir/mcp",
       "oauth_client_id": "aimony-chatgpt-mcp",
-      "oauth_resource": "https://api.aimony.ir/mcp"
+      "oauth_resource": "https://api.aimony.ir/mcp",
+      "tools": {
+        "capability.propose": {
+          "approval_mode": "approve"
+        }
+      }
     }
   }
 }
