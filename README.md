@@ -18,7 +18,7 @@ codex plugin add aimony-erp@aimony-erp
 ## Capabilities
 
 - Identify the active workspace and keep all reads and writes tenant-scoped.
-- Discover any currently authorized ERP capability through a compact, schema-versioned catalog even when the host reads only the first MCP tool page; reads use a strictly read-only lane and writes use a proposal-only lane.
+- Discover any currently authorized ERP capability through a compact, schema-versioned catalog even when the host reads only the first MCP tool page; reads, approval-gated writes, and internal records use disjoint effect lanes.
 - Count, filter, project, sort, and page ERP entities with opaque cursors.
 - Follow declared one-hop relationships without bypassing target permissions.
 - Create exact, replay-safe proposals and finalize one or several only after valid consent.
