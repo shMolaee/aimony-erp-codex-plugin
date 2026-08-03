@@ -4,20 +4,21 @@ AIMony ERP connects Codex to the user’s authenticated AIMony workspace for per
 
 ## Direct download
 
-- [Download AIMony ERP for Codex v0.2.0](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.2.0.zip)
+- [Download AIMony ERP for Codex v0.2.1](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.2.1.zip)
 - [Download the latest package](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin.zip)
-- [SHA-256 checksum](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.2.0.zip.sha256)
+- [SHA-256 checksum](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.2.1.zip.sha256)
 
 After downloading, extract the ZIP and add its root directory as a local Codex marketplace:
 
 ```powershell
-codex plugin marketplace add C:\path\to\aimony-erp-codex-plugin-v0.2.0
+codex plugin marketplace add C:\path\to\aimony-erp-codex-plugin-v0.2.1
 codex plugin add aimony-erp@aimony-erp
 ```
 
 ## Capabilities
 
 - Identify the active workspace and keep all reads and writes tenant-scoped.
+- Discover and invoke any currently authorized ERP capability through a compact, schema-versioned catalog even when the host reads only the first MCP tool page.
 - Count, filter, project, sort, and page ERP entities with opaque cursors.
 - Follow declared one-hop relationships without bypassing target permissions.
 - Create exact, replay-safe proposals and finalize one or several only after valid consent.
