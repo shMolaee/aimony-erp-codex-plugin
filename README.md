@@ -19,6 +19,7 @@ codex plugin add aimony-erp@aimony-erp
 
 - Identify the active workspace and keep all reads and writes tenant-scoped.
 - Discover any currently authorized ERP capability through a compact, schema-versioned catalog even when the host reads only the first MCP tool page; reads, approval-gated writes, and internal records use disjoint effect lanes.
+- Create, inspect, and revoke actor/workspace/source-bound standing approvals so explicitly authorized actions can execute without repetitive confirmation while critical actions and all domain safeguards remain protected.
 - Count, filter, project, sort, and page ERP entities with opaque cursors.
 - Follow declared one-hop relationships without bypassing target permissions.
 - Create exact, replay-safe proposals and finalize one or several only after valid consent.
@@ -52,6 +53,7 @@ Open a new Codex task after installation. On first use, Codex starts the AIMony 
 - `همه فاکتورهای تأییدشده را صفحه‌به‌صفحه بشمار و نام مشتری هرکدام را هم بیاور.`
 - `برای این تیکت پاسخ عمومی ثبت کن و بعد از تأیید من نهایی‌اش کن.`
 - `یک پیش‌نویس سند روزنامه متوازن با حساب‌های معتبر سیستم بساز و بعد از تأیید من ثبتش کن.`
+- `برای کارهای تا سطح ریسک بالا تأیید همیشگی را فعال کن، ولی ارسال پیام یا اثر خارجی را شامل نکن.`
 - `این پست بلاگ را برای فردا ساعت ۹ صبح منتشر کن.`
 
 ## Repository layout

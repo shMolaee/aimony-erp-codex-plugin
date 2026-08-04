@@ -55,7 +55,11 @@ Use AIMony's MCP tools to complete the user's request in the authenticated works
 - A short confirmation such as `آره` is valid only when the immediately preceding assistant turn contains exactly one proposal. If it contains several, require an explicit all-actions phrase or a specific action.
 - For an explicit `همه را تأیید و اجرا کن`, finalize only the exact references from the immediately preceding assistant turn, up to the server limit. Do not search for unrelated pending approvals.
 - If the user explicitly says no further confirmation is needed for the current request, still perform both backend phases in order: create each exact proposal, then finalize those exact references in the same turn.
-- A no-further-confirmation instruction is scoped to the current authenticated message/run. Never store it as a user or workspace preference.
+- A no-further-confirmation instruction remains current-message-only unless the user explicitly asks for a permanent, standing, always-on, or "do not ask me every time" authorization.
+- For explicit standing consent, discover and describe `approval.standing.grant`. Propose one exact grant with `scopeMode=all_approval_actions` or a reviewed `selected_tools` list, an explicit `maxRisk` no higher than `high`, an explicit `allowExternalSideEffects` choice, an optional expiry, and a clear reason. Confirm that exact grant once with the user's unchanged standing-consent text; never infer or silently widen standing consent.
+- A standing grant is bound by the backend to the same authenticated actor, workspace, and connection source. It is revocable, cannot cover critical-risk actions or approval-control tools, and never bypasses tenant isolation, current permissions, target validation, finance invariants, optimistic concurrency, idempotency, or audit.
+- When a future proposal returns `standingApprovalApplied: true`, it has already passed the matching standing authorization and normal execution controls. Do not call `approval.confirm_and_execute` and do not ask the user again; report only the authoritative final result. If it remains pending, the grant did not cover that action.
+- Use `approval.standing.list` to show the current user's grants and `approval.standing.revoke` to immediately revoke one by `grantId` or all active grants when no id is supplied. Never read, alter, or revoke another actor's grant.
 - Report completion only when the authoritative result says `mutationExecuted: true`. Otherwise say proposed, pending, blocked, or failed.
 
 ## Tickets and workflows
@@ -75,7 +79,7 @@ Use AIMony's MCP tools to complete the user's request in the authenticated works
 - A journal draft must use exact active, postable leaf account codes returned by the ERP and must remain balanced. Never invent an account code, use a control/locked account, or repair an unbalanced journal silently.
 - Before `finance.document.approve`, `finance.document.post`, or `finance.document.void`, read the exact tenant-owned `finance_document` with `semantic.query` and select `id`, `docNumber`, `status`, and `postingStatus`. Pass the returned `id` as `docId`; the backend snapshots the authoritative current `syncVersion` into the immutable proposal when `expectedSyncVersion` is omitted. Never invent a version. Re-read after every transition because approval changes the record. On a stale-proposal conflict, read again and ask for a fresh decision; never overwrite the newer state.
 - Approval and posting are separate business transitions. A purchase or payment draft without complete accounting lines is intentionally not postable; report that limitation and request the missing accounting evidence instead of bypassing double-entry validation.
-- Every finance write follows the normal explicit approval flow, including draft creation and each later transition. Never claim a document is approved, posted, or voided until the authoritative result confirms that exact state.
+- Every finance write follows the governed proposal flow, including draft creation and each later transition. A matching active standing grant may consume that proposal without another question, but accounting invariants, permissions, freshness checks, and audit remain mandatory. Never claim a document is approved, posted, or voided until the authoritative result confirms that exact state.
 
 ## Strategy and managed configuration
 
@@ -83,7 +87,7 @@ Use AIMony's MCP tools to complete the user's request in the authenticated works
 - Never represent contacts, leads, objectives, key results, KPIs, or risks through a customer or generic task tool. Use only the matching typed capability currently returned by `tools/list`.
 - Read configuration with `settings.configuration.read`. It returns only cataloged, non-secret keys the current actor may manage; it is not a generic settings or key/value browser.
 - Change configuration only with `settings.configuration.update`, exactly one allow-listed key per proposal. Read first; for an existing setting the backend snapshots `updatedAt` when `expectedUpdatedAt` is omitted.
-- Never guess a setting key, expose secrets, bypass a stale-version conflict, or use the managed configuration tool to change an AI autopilot policy. Apply the normal explicit approval flow to every configuration update.
+- Never guess a setting key, expose secrets, bypass a stale-version conflict, or use the managed configuration tool to change an AI autopilot policy. Every configuration update must use the governed proposal flow; a matching standing grant may consume it without another question.
 
 ## Blog drafts and scheduled publishing
 
@@ -91,7 +95,7 @@ Use AIMony's MCP tools to complete the user's request in the authenticated works
 - Use `site.post.create_or_update`; new posts require `title`, `slug`, and `content` and default to `draft`.
 - Use `status=published` only when publishing was explicitly requested. Use optional RFC3339 `publishedAt` to schedule publication; never pair a scheduled publication time with `status=draft`.
 - Future scheduled posts are not public until their publish time. Updates require exact `postId`; the backend snapshots its current `rowVersion` when omitted.
-- Archive and delete are unsupported. Apply the same approval flow and report published state only after an authoritative committed result.
+- Archive and delete are unsupported. Apply the same governed proposal flow (including any matching standing grant) and report published state only after an authoritative committed result.
 
 ## Fail plainly
 
