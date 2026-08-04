@@ -4,14 +4,14 @@ AIMony ERP connects Codex to the user’s authenticated AIMony workspace for per
 
 ## Direct download
 
-- [Download AIMony ERP for Codex v0.2.2](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.2.2.zip)
+- [Download AIMony ERP for Codex v0.2.3](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.2.3.zip)
 - [Download the latest package](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin.zip)
-- [SHA-256 checksum](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.2.2.zip.sha256)
+- [SHA-256 checksum](https://app.aimony.ir/downloads/standalone/codex/aimony-erp/aimony-erp-codex-plugin-v0.2.3.zip.sha256)
 
 After downloading, extract the ZIP and add its root directory as a local Codex marketplace:
 
 ```powershell
-codex plugin marketplace add C:\path\to\aimony-erp-codex-plugin-v0.2.2
+codex plugin marketplace add C:\path\to\aimony-erp-codex-plugin-v0.2.3
 codex plugin add aimony-erp@aimony-erp
 ```
 

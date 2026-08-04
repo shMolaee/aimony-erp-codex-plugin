@@ -1,6 +1,6 @@
 {
   "name": "aimony-erp",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Connect Codex to AIMony ERP with guided sign-in, permission-scoped dynamic discovery, disjoint read, proposal, and internal-record lanes, finance, strategy, settings, and blog publishing.",
   "author": {
     "name": "Aimori"
