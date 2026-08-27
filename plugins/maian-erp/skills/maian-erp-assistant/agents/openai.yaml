@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maian ERP Assistant"
+  short_description: "Use Maian ERP with simple login and safe actions"
+  default_prompt: "Use $maian-erp-assistant to connect to my Maian workspace and complete this ERP request."

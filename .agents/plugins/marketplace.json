@@ -1,14 +1,14 @@
 {
-  "name": "aimony-erp",
+  "name": "maian-erp",
   "interface": {
-    "displayName": "AIMony ERP"
+    "displayName": "Maian ERP"
   },
   "plugins": [
     {
-      "name": "aimony-erp",
+      "name": "maian-erp",
       "source": {
         "source": "local",
-        "path": "./plugins/aimony-erp"
+        "path": "./plugins/maian-erp"
       },
       "policy": {
         "installation": "AVAILABLE",

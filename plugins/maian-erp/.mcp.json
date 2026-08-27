@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "maian-erp": {
+      "type": "http",
+      "url": "https://dash.maian.app/api/mcp",
+      "oauth_client_id": "maian-chatgpt-mcp",
+      "oauth_resource": "https://dash.maian.app/api/mcp",
+      "tools": {
+        "capability.propose": {
+          "approval_mode": "approve"
+        },
+        "capability.record": {
+          "approval_mode": "approve"
+        }
+      }
+    },
+    "maian-erp-guide": {
+      "type": "http",
+      "url": "https://dash.maian.app/api/erp-guide/mcp"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "maian-erp",
+  "version": "0.2.8",
+  "description": "Connect Codex to Maian ERP with guided sign-in, permission-scoped dynamic discovery, governed ERP actions, multilingual site management, and scheduled publishing.",
+  "author": {
+    "name": "Maian"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Maian ERP",
+    "shortDescription": "Run Maian ERP tasks safely from Codex.",
+    "longDescription": "Connects Codex to Maian ERP with native sign-in, a permission-scoped dynamic capability catalog, exact confirmations, revocable standing approvals, replay-safe finance and domain actions, current invoice presentations, typed strategy records, managed settings, multilingual site locales and linked post translations, and scheduled publishing.",
+    "developerName": "Maian",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "websiteURL": "https://maian.app/",
+    "defaultPrompt": [
+      "فضای کاری فعال Maian من را شناسایی و خلاصه کن.",
+      "تعداد و فهرست مشتریان، محصولات، تیکت‌ها و فاکتورهای این workspace را کامل بررسی کن.",
+      "این عملیات ERP را پیشنهاد بده و بعد از تأیید صریح من از همین‌جا نهایی کن."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

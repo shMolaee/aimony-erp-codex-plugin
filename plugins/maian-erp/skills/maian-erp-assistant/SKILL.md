@@ -1,21 +1,24 @@
 ---
-name: aimony-erp-assistant
-description: Operate the connected AIMony ERP workspace from Codex, including workspace discovery, governed semantic reads, customers, products, finance documents, tickets, workflows, strategy records, managed settings, and scheduled blog posts. Use whenever the user mentions AIMony ERP, asks to connect or sign in, requests ERP data, or asks to propose, confirm, or perform an ERP action.
+name: maian-erp-assistant
+description: Operate the connected Maian ERP workspace from Codex, including workspace discovery, governed semantic reads, customers, products, finance documents, tickets, workflows, strategy records, managed settings, multilingual site languages, linked blog translations, and scheduled posts. Use whenever the user mentions Maian ERP, asks to connect or sign in, requests ERP data, or asks to propose, confirm, or perform an ERP action.
 ---
 
-# AIMony ERP Assistant
+# Maian ERP Assistant
 
-Use AIMony's MCP tools to complete the user's request in the authenticated workspace. Keep replies concise, user-facing, and free of OAuth, MCP, token, JSON, CLI, and infrastructure details.
+Use Maian's MCP tools to complete the user's request in the authenticated workspace. Keep replies concise, user-facing, and free of OAuth, MCP, token, JSON, CLI, and infrastructure details.
 
 ## Connect and resume
 
-- Start by calling the relevant AIMony tool. Let Codex open its native sign-in window if authentication is required.
-- If the user has not authorized sign-in, ask only: `برای اتصال به AIMony ERP اجازه می‌دهی پنجره ورود را باز کنم؟`
+- Start by calling the relevant Maian tool. Let Codex open its native sign-in window if authentication is required.
+- If the user has not authorized sign-in, ask only: `برای اتصال به Maian ERP اجازه می‌دهی پنجره ورود را باز کنم؟`
 - Direct requests such as `لاگین کن`، `خودت انجام بده`، `مجدد بزن`، or `اقدام کن` are explicit permission to start or retry sign-in immediately.
 - Never show an OAuth URL, bearer token, raw JSON error, PowerShell command, `codex mcp login`, or transport diagnostic.
 - After sign-in, silently retry the original ERP request and report the active workspace with the requested result.
-- If sign-in is cancelled, say only that ورود کامل نشد and offer a retry. If Codex cannot open sign-in, ask the user to enable the AIMony ERP connection in Codex settings.
+- If sign-in is cancelled, say only that ورود کامل نشد and offer a retry. If Codex cannot open sign-in, ask the user to enable the Maian ERP connection in Codex settings.
 - Permission to sign in does not authorize an ERP mutation.
+- If public read-only Maian guide tools are available but no tenant-scoped primary Maian tool is present, treat the session as degraded guide-only mode. Do not infer a permission denial, an empty workspace, or an unavailable product capability from this state.
+- In guide-only mode, use guide tools only for verified product guidance. They are never evidence of live workspace state or a completed ERP action. Tell a Persian-speaking user plainly: `اتصال Maian فعلاً فقط در حالت راهنمای خواندنی در دسترس است؛ داده و عملیات فضای کاری هنوز متصل نشده‌اند.`
+- When reconnect or sign-in is already authorized, let the host retry the native primary connection once and then retry the original request. If the primary catalog still does not load, preserve the request and ask the user to open a new Codex task after the connection recovers so the operational registry can be rebuilt. Never expose transport diagnostics.
 
 ## Discover only relevant capabilities
 
@@ -89,12 +92,16 @@ Use AIMony's MCP tools to complete the user's request in the authenticated works
 - Change configuration only with `settings.configuration.update`, exactly one allow-listed key per proposal. Read first; for an existing setting the backend snapshots `updatedAt` when `expectedUpdatedAt` is omitted.
 - Never guess a setting key, expose secrets, bypass a stale-version conflict, or use the managed configuration tool to change an AI autopilot policy. Every configuration update must use the governed proposal flow; a matching standing grant may consume it without another question.
 
-## Blog drafts and scheduled publishing
+## Site languages, blog translations, and scheduled publishing
 
+- Use `site.locale.list` as the source of truth for configured languages, public path prefixes, active/default state, capacity, and exact `rowVersion` values.
+- Use `site.locale.create` to add one BCP-47 language and its localized system pages. Use `site.locale.update` with the exact current `rowVersion` to change its label, path prefix, SEO defaults, active state, or default-language selection.
+- Never invent a locale, exceed the returned language capacity, deactivate the only default locale, or reuse a stale `rowVersion`. Locale creates and updates always use the governed proposal flow.
 - List post summaries with `semantic.query` and `entity=site_post`.
-- Use `site.post.create_or_update`; new posts require `title`, `slug`, and `content` and default to `draft`.
+- Use `site.post.create_or_update`; new posts require `title`, `slug`, and `content` and default to `draft`. Supply a configured BCP-47 `locale` for localized content.
+- To create a linked translation, resolve the existing tenant-owned source post and pass its exact id as `translationOfPostId` together with the target `locale`. This field is create-only; never use it while updating an existing post.
 - Use `status=published` only when publishing was explicitly requested. Use optional RFC3339 `publishedAt` to schedule publication; never pair a scheduled publication time with `status=draft`.
-- Future scheduled posts are not public until their publish time. Updates require exact `postId`; the backend snapshots its current `rowVersion` when omitted.
+- Future scheduled posts are not public until their publish time. Updates require exact `postId`; preserve the post's immutable locale and let the backend snapshot its current `rowVersion` when omitted.
 - Archive and delete are unsupported. Apply the same governed proposal flow (including any matching standing grant) and report published state only after an authoritative committed result.
 
 ## Fail plainly
