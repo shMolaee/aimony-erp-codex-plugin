@@ -4,14 +4,14 @@ Maian ERP connects Codex to the user’s authenticated Maian workspace for permi
 
 ## Direct download
 
-- [Download Maian ERP for Codex v0.2.9](https://dash.maian.app/downloads/standalone/codex/maian-erp/maian-erp-codex-plugin-v0.2.9.zip)
+- [Download Maian ERP for Codex v0.2.10](https://dash.maian.app/downloads/standalone/codex/maian-erp/maian-erp-codex-plugin-v0.2.10.zip)
 - [Download the latest package](https://dash.maian.app/downloads/standalone/codex/maian-erp/maian-erp-codex-plugin.zip)
-- [SHA-256 checksum](https://dash.maian.app/downloads/standalone/codex/maian-erp/maian-erp-codex-plugin-v0.2.9.zip.sha256)
+- [SHA-256 checksum](https://dash.maian.app/downloads/standalone/codex/maian-erp/maian-erp-codex-plugin-v0.2.10.zip.sha256)
 
 After downloading, extract the ZIP and add its root directory as a local Codex marketplace:
 
 ```powershell
-codex plugin marketplace add C:\path\to\maian-erp-codex-plugin-v0.2.9
+codex plugin marketplace add C:\path\to\maian-erp-codex-plugin-v0.2.10
 codex plugin add maian-erp@maian-erp
 ```
 

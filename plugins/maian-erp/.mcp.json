@@ -6,9 +6,6 @@
       "oauth_client_id": "maian-chatgpt-mcp",
       "oauth_resource": "https://dash.maian.app/api/mcp",
       "tools": {
-        "approval.confirm_and_execute": {
-          "approval_mode": "approve"
-        },
         "capability.propose": {
           "approval_mode": "approve"
         },
