@@ -1,6 +1,6 @@
 {
   "name": "maian-erp",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Connect Codex to Maian ERP with guided sign-in, permission-scoped dynamic discovery, governed ERP actions, multilingual site management, and scheduled publishing.",
   "author": {
     "name": "Maian"
